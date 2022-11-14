@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="login.css"> -->
 </head>
 
-<body>
+<body style="background-color: rgb(65, 65, 68);">
    <!-- Section: Design Block -->
 <section class="text-center text-lg-start">
     <style>
@@ -28,38 +28,42 @@
       <div class="row g-0 align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
           <div class="card cascading-right" style="
-              background: hsla(0, 0%, 100%, 0.55);
+              background: hsla(255, 28%, 30%, 0.55);
               backdrop-filter: blur(30px);
               ">
             <div class="card-body p-5 shadow-5 text-center">
-              <h2 class="fw-bold mb-5">Sign up now</h2>
+              <h2 class="fw-bold mb-5" style="color:aliceblue">Sign up now</h2>
               <form>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
+                      <label class="form-label" for="form3Example1" style="color:aliceblue">First name</label>
                       <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">First name</label>
+                     
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
+                      <label class="form-label" for="form3Example2" style="color:aliceblue">Last name</label>
                       <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Last name</label>
+                     
                     </div>
                   </div>
                 </div>
   
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control" />
-                  <label class="form-label" for="email">Email address</label>
+                 
+                  <label class="form-label" for="email" style="color:aliceblue">Email address</label>
+                  <input type="email" id="em" class="form-control" required/>
                 </div>
   
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control" />
-                  <label class="form-label" for="password">Password</label>
+                 
+                  <label class="form-label" for="password" style="color:aliceblue">Password</label>
+                  <input type="password" id="pas" class="form-control" required/>
                 </div>
 <!--   
                 Checkbox
@@ -71,12 +75,12 @@
                 </div>
    -->
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4" id="signup">
+                <button type="button" class="btn btn-primary btn-block mb-4" id="signup" >
                   Sign up
                 </button>
 
                 <div>
-                    <p class="mb-0">already have an account? <a href="login.html" class="text-blue-50 fw-bold">Sign in</a>
+                    <p class="mb-0" style="color:aliceblue">already have an account? <a href="login.html" class="text-blue-50 fw-bold">Sign in</a>
                     </p>
                   </div>
   
@@ -105,7 +109,9 @@
         </div>
   
         <div class="col-lg-6 mb-5 mb-lg-0">
-          <img src="https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-2242.jpg?size=338&ext=jpg&ga=GA1.2.1064578239.1668335255" class="w-90 rounded-4 shadow-4"
+          <!-- <img src="https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-2242.jpg?size=338&ext=jpg&ga=GA1.2.1064578239.1668335255" class="w-90 rounded-4 shadow-4"
+            alt="" /> -->
+            <img src="images/signup.jpg" style="height:560px; width:500px"
             alt="" />
         </div>
       </div>
@@ -116,6 +122,7 @@
   <!-- <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js"></script> -->
     <script type="module">
         // Import the functions you need from the SDKs you need
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
@@ -137,18 +144,21 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         //const analytics = getAnalytics(app);
-        const auth = getAuth();
+        const auth = getAuth(app);
 
-        const signUp= document.getElementById('signup');
-        signUp.addEventListener('click',(e) => {
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
+        //const signUp= document.getElementById('signup');
+      //var email = document.getElementById('em').value;
+      //var password = document.getElementById('pas').value;
+        var email = "abcd@gmail.com";
+        var password = "1233455";
+        signup.addEventListener('click',(e) => {
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
      // Signed in 
      
-      const user = userCredential.user;
-      console.log(user); 
+      //const user = userCredential.user;
+      console.log(userCredential); 
       window.alert("Account Created Sucessfully!!");
+      window.location.href = "login.html";
     
     })
     .catch((error) => {
@@ -156,6 +166,7 @@
         const errorMessage = error.message;
   
         alert(errorMessage);
+        console.log(errorMessage)
     });
 
 
